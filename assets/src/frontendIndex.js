@@ -4,7 +4,10 @@ import { ArticlesFrontend } from './blocks/Articles/ArticlesFrontend';
 import { CookiesFrontend } from './blocks/Cookies/CookiesFrontend';
 import { SplittwocolumnsFrontend } from "./blocks/Splittwocolumns/SplittwocolumnsFrontend";
 import { HappypointFrontend } from './blocks/Happypoint/HappypointFrontend';
+import { MediaFrontend } from './blocks/Media/MediaFrontend';
+import { setupMediaElementJS } from "./blocks/Media/MediaElementPlugin";
 
+// Render React components
 const COMPONENTS = {
   'planet4-blocks/spreadsheet': SpreadsheetFrontend,
   'planet4-blocks/counter': CounterFrontend,
@@ -12,6 +15,7 @@ const COMPONENTS = {
   'planet4-blocks/cookies': CookiesFrontend,
   'planet4-blocks/split-two-columns': SplittwocolumnsFrontend,
   'planet4-blocks/happypoint': HappypointFrontend,
+  'planet4-blocks/media-video': MediaFrontend,
 };
 
 document.querySelectorAll( `[data-render]` ).forEach(
@@ -22,3 +26,6 @@ document.querySelectorAll( `[data-render]` ).forEach(
     wp.element.render( <BlockFrontend { ...attributes.attributes } />, blockNode );
   }
 );
+
+// Other non-react initializations
+setupMediaElementJS();

@@ -11,6 +11,7 @@ use P4GBKS\Blocks\Spreadsheet;
 use P4GBKS\Blocks\Articles;
 use P4GBKS\Blocks\SplitTwoColumns;
 use P4GBKS\Blocks\Happypoint;
+use P4GBKS\Blocks\Media;
 
 /**
  * This class is just a place for add_endpoints to live.
@@ -156,6 +157,23 @@ class Rest_Api {
 					'methods'  => WP_REST_Server::READABLE,
 					'callback' => static function ( $fields ) {
 						$to_return = Articles::get_posts( $fields );
+						return rest_ensure_response( $to_return );
+					},
+				],
+			]
+		);
+
+		/**
+		 * Endpoint to get the media data for non-static media blocks
+		 */
+		register_rest_route(
+			self::REST_NAMESPACE,
+			'/get-media-data',
+			[
+				[
+					'methods'  => WP_REST_Server::READABLE,
+					'callback' => static function ( $fields ) {
+						$to_return = Media::get_media_data( $fields );
 						return rest_ensure_response( $to_return );
 					},
 				],

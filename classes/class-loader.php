@@ -362,6 +362,9 @@ final class Loader {
 			'forms' => $this->get_en_forms(),
 		];
 		wp_localize_script( 'planet4-blocks-script', 'p4en_vars', $reflection_vars );
+
+		// Sets translated strings for a JS script.
+		wp_set_script_translations( 'planet4-blocks-script', 'planet4-blocks-backend', P4GBKS_PLUGIN_DIR . '/languages' );
 	}
 
 	/**
@@ -407,6 +410,9 @@ final class Loader {
 			'dateFormat' => get_option( 'date_format' ),
 		];
 		wp_localize_script( 'planet4-blocks-frontend', 'p4bk_vars', $reflection_vars );
+
+		// Sets translated strings for a JS script.
+		wp_set_script_translations( 'planet4-blocks-frontend', 'planet4-blocks', P4GBKS_PLUGIN_DIR . '/languages' );
 	}
 
 	/**
